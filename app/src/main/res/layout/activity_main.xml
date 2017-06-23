@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.zterry.databindingdemo.SexUtil"></import>
+
+        <import type="com.zterry.databindingdemo.foreign.User"></import>
+
+        <import type="android.text.TextUtils"></import>
+
+        <import
+            alias="foreignUser"
+            type="com.zterry.databindingdemo.foreign.User" />
+
+        <variable
+            name="user"
+            type="com.zterry.databindingdemo.User" />
+
+        <variable
+            name="presenter"
+            type="com.zterry.databindingdemo.Presenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName ?? user.DISPLAY_NAME}" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.lastName}" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{SexUtil.getSex(user.sex)}" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{User.TAG}" />
+
+    
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->presenter.onSaveClick()}"
+            android:text="button" />
+
+    </LinearLayout>
+</layout>
